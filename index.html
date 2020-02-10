@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>مولد الجداول الدراسية</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="مولد الجداول الدراسية لطلاب جامعة الزرقاء الخاصة">
+        <meta name="keywords" content="مولد الجداول الدراسية,جداول دراسية,تنزيل الساعات,تنزيل المواد,إنشاء جدول دراسي">
+        <meta name="author" content="رامي مناف عبد الله">
+    </head>
+    <body>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="js/multiselect.js"></script>
+        <link rel="stylesheet" href="css/multiselect.css"/>
+        <script src="js/dom-to-image.min.js"></script>
+        <script src="js/classes.js"></script>
+        <div class="text-center .container-fluid" style="height: 70px;line-height: 70px;padding-top: 10px;background-color: #234471">
+            <h2 style="color: white">مولد الجداول الدراسية</h2>
+        </div>
+        <div>
+            <div class="alert alert-info hidden" id="info-message" role="alert">
+                <button type="button" class="close" style="left: 0px;right: auto;float: left">&times;</button>
+                <ul dir="rtl" style="text-align: right">
+                    <li>قم بإضافة الشعب المواد المطروحة عن طريق الضغط على زر إضافة</li>
+                    <li>اكتب بيانات داخل الحقول المناسبة في الجدول</li>
+                    <li>في حقول الوقت تكون الساعة 12:00 ظهرًا وما قبلها صباحًا والساعة 12:01 ظهرًا وما بعدها فهي مساءً</li>
+                    <li>اختر أيام الأسبوع التي تريد الدوام فيها من الخلال القائمة في الأسفل</li>
+                    <li>اضغط على زر معالجة لتظهر جميع الجدوال الممكنة في خانة النتيجة أسفل الصفحة</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-info" id="info" style="border-radius: 30px;width: 48px;float: left"><span class="fas fa-info fa-2x"/></button>
+            <div style="margin-left:auto; margin-right:0; width: max-content">
+                <select multiple="multiple" id="days" role="multiselect">
+                    <option value="ح" selected="true">ح</option>
+                    <option value="ن">ن</option>
+                    <option value="ث" selected="true">ث</option>
+                    <option value="ر">ر</option>
+                    <option value="خ" selected="true">خ</option>
+                </select>
+                <label> :اختر أيام الدوام</label>
+            </div>
+            <div style="margin-left:auto; margin-right:0; width: max-content">
+                <button id="add" class="btn btn-primary">إضافة <span class="fas fa-plus fa-2x" style="vertical-align: middle"></span></button>
+                <button id="generate" class="btn btn-success">معالجة <span class="fas fa-caret-right fa-2x" style="vertical-align: middle"></span></button>
+            </div>
+        </div>
+        <table id="classes-table" class="table table-bordered table-responsive-md table-striped">
+            <thead>
+                <tr>
+                    <th>وقت الانتهاء</th>
+                    <th>وقت البدء</th>
+                    <th>أيام الأسبوع</th>
+                    <th>رقم الشعبة</th>
+                    <th>اسم المادة</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="time" value="12:00"/></td>
+                    <td><input type="time" value="11:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">1</td>
+                    <td contenteditable="true">Biochem 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="15:00"/></td>
+                    <td><input type="time" value="14:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">Biochem 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="12:00"/></td>
+                    <td><input type="time" value="11:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح">ح</option>
+                            <option value="ن" selected="true">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر" selected="true">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">Biochem 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="13:30"/></td>
+                    <td><input type="time" value="12:30"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح">ح</option>
+                            <option value="ن" selected="true">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر" selected="true">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">Biochem 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="14:00"/></td>
+                    <td><input type="time" value="13:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح"selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">1</td>
+                    <td contenteditable="true">Organic 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="12:00"/></td>
+                    <td><input type="time" value="11:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح"selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">Organic 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="12:30"/></td>
+                    <td><input type="time" value="11:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح">ح</option>
+                            <option value="ن" selected="true">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر" selected="true">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">Organic 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="14:00"/></td>
+                    <td><input type="time" value="12:30"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح">ح</option>
+                            <option value="ن" selected="true">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر" selected="true">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">Organic 2</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="16:00"/></td>
+                    <td><input type="time" value="15:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">1</td>
+                    <td contenteditable="true">Automatic Analysis</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="14:00"/></td>
+                    <td><input type="time" value="13:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">Automatic Analysis</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="12:30"/></td>
+                    <td><input type="time" value="11:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح">ح</option>
+                            <option value="ن" selected="true">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر" selected="true">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">Automatic Analysis</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="12:00"/></td>
+                    <td><input type="time" value="11:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">1</td>
+                    <td contenteditable="true">Pharmaceutics</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="14:00"/></td>
+                    <td><input type="time" value="13:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">Pharmaceutics</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="14:00"/></td>
+                    <td><input type="time" value="12:30"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح">ح</option>
+                            <option value="ن" selected="true">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر" selected="true">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">Pharmaceutics</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="10:00"/></td>
+                    <td><input type="time" value="09:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">1</td>
+                    <td contenteditable="true">Micro</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="14:00"/></td>
+                    <td><input type="time" value="12:30"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح">ح</option>
+                            <option value="ن" selected="true">ن</option>
+                            <option value="ث">ث</option>
+                            <option value="ر" selected="true">ر</option>
+                            <option value="خ">خ</option>
+                        </select></td>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">Micro</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+                <tr>
+                    <td><input type="time" value="12:00"/></td>
+                    <td><input type="time" value="11:00"/></td>
+                    <td><select multiple="multiple" role="multiselect">
+                            <option value="ح" selected="true">ح</option>
+                            <option value="ن">ن</option>
+                            <option value="ث" selected="true">ث</option>
+                            <option value="ر">ر</option>
+                            <option value="خ" selected="true">خ</option>
+                        </select></td>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">Micro</td>
+                    <td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bg-success" style="line-height: 100px;padding: 20px;">
+            <h1 class="text-center" style="color: white">النتيجة</h1>
+        </div>
+        <div class="text-center" style="padding-top: 10px">
+            <button class="btn btn-info" id="save" disabled="true">حفظ الجدول <span class="fas fa-save fa-2x"></span></button>
+        </div>
+        <div id="generated-tables" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false" style="height: 360px">
+            <ol class="carousel-indicators">
+            </ol>
+            <div class="carousel-inner" style="height: 360px">
+                <div class="carousel-item active" style="height: 360px;line-height:360px;padding: 150px"><h2 class="text-center">لا يوجد نتائج لعرضها</h2></div>
+            </div>
+            <a class="carousel-control-prev" href="#generated-tables" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#generated-tables" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div style="background-color: #234471;text-align: right;direction: rtl;color: white;padding: 20px">
+            <p>مرخص برخصة <a href="https://www.marefa.org/%D8%B1%D8%AE%D8%B5%D8%A9_%D9%88%D9%82%D9%81_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9">وقف العامة 1.0</a></p>
+            <p>رامي مناف عبد الله</p>
+            <p>بريد : <a href="mailto:ramimanaf20001@gmail.com">ramimanaf20001@gmail.com</a></p>
+        </div>
+        <script type="text/javascript">
+            var debug = false;
+            const row = '<tr><td><input type="time"/></td><td><input type="time"/></td><td><select multiple="multiple" role="multiselect"><option value="ح">ح</option><option value="ن">ن</option><option value="ث">ث</option><option value="ر">ر</option><option value="خ">خ</option></select></td><td contenteditable="true">Class ID</td><td contenteditable="true">Subject Name</td><td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td></tr>';
+            const generatedTable = '<div class="carousel-item"><table class="generated-table table table-bordered table-responsive-md table-striped" style="background-color: white"><thead><tr><th>وقت الانتهاء</th><th>وقت البدء</th><th>أيام الأسبوع</th><th>رقم الشعبة</th><th>اسم المادة</th></tr></thead><tbody></tbody></table></div>';
+            const noData = '<div class="carousel-item active" style="height: 360px;line-height:360px;padding: 150px"><h2 class="text-center">لا يوجد نتائج لعرضها</h2></div>';
+            const table = $("#classes-table");
+            const body = $("#classes-table tbody");
+            const generatedTables = $("#generated-tables .carousel-inner");
+            const carousel = $(".carousel");
+            const carouselIndicators = $(".carousel-indicators");
+            const save = $("#save");
+            var subjects = {};
+            var allPossibleSchedules = [];
+            function checkAllPossibleStates(schedule) {
+                let avilableClasses = subjects[Object.keys(subjects)[Object.keys(schedule).length]].length;
+                AVILABLE_CLASSES:for (let x = 0; x < avilableClasses; x++) {
+                    scheduleClone = Object.assign({}, schedule);
+                    let subj = subjects[Object.keys(subjects)[Object.keys(scheduleClone).length]][x];
+                    SELECTED_CLASSES_INTERCEPTION:for (let k = 0; k < Object.keys(scheduleClone).length; k++) {
+                        if (scheduleClone[Object.keys(scheduleClone)[k]].intercept(subj)) {
+                            if (debug) {
+                                console.log(Object.keys(scheduleClone)[k] + ":" + scheduleClone[Object.keys(scheduleClone)[k]].id + " intercept" + Object.keys(subjects)[Object.keys(scheduleClone).length] + ":" + subj.id);
+                            }
+                            continue AVILABLE_CLASSES;
+                        }
+                    }
+                    scheduleClone[Object.keys(subjects)[Object.keys(scheduleClone).length]] = subj;
+                    if (Object.keys(scheduleClone).length === Object.keys(subjects).length) {
+                        allPossibleSchedules.push(scheduleClone);
+                    } else {
+                        checkAllPossibleStates(Object.assign({}, scheduleClone));
+                    }
+                }
+            }
+
+            function render(schedules) {
+                if (schedules.length === 0) {
+                    generatedTables.append(noData);
+                    save.attr("disabled", true);
+                } else {
+                    save.removeAttr("disabled");
+                    for (let i = 0; i < schedules.length; i++) {
+                        carouselIndicators.append('<li data-target="#generated-tables" data-slide-to="' + i + '"></li>');
+                        generatedTables.append(generatedTable);
+                        let lastTableBody = $(".generated-table").last().find("tbody");
+                        for (let k = 0; k < Object.keys(schedules[i]).length; k++) {
+                            let clazz = schedules[i][Object.keys(schedules[i])[k]];
+                            let row = $("<tr></tr>");
+                            row.append($("<td><input type='time' readonly='true' value='" + clazz.end + "'/></td>"));
+                            row.append($("<td><input type='time' readonly='true' value='" + clazz.start + "'/></td>"));
+                            row.append($("<td></td>").text(clazz.days.join(" ")));
+                            row.append($("<td></td>").text(clazz.id));
+                            row.append($("<td></td>").text(Object.keys(schedules[i])[k]));
+                            lastTableBody.append(row);
+                        }
+                    }
+                    carouselIndicators.children().first().addClass("active");
+                    generatedTables.children().first().addClass("active");
+                }
+            }
+
+            function extend(father, son) {
+                for (let i = 0; i < son.length; i++) {
+                    if (father.indexOf(son[i]) === -1) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function filterByDays(scheduales) {
+                let selectedDays = $("#days").val();
+                let filtered = [];
+                SCHEDULES_LOOP:for (let i = 0; i < scheduales.length; i++) {
+                    SUBJECTS_LOOP:for (let k = 0; k < Object.keys(scheduales[i]).length; k++) {
+                        if (!extend(selectedDays, scheduales[i][Object.keys(scheduales[i])[k]].days)) {
+                            continue SCHEDULES_LOOP;
+                        }
+                    }
+                    filtered.push(scheduales[i]);
+                }
+                return filtered;
+            }
+
+            $(function () {
+                $("#info").on("click", function () {
+                    $("#info-message").toggleClass("hidden");
+                });
+                $("#info-message button.close").on("click", function () {
+                    $("#info-message").toggleClass("hidden");
+                });
+                save.on("click", function () {
+                    domtoimage.toJpeg(generatedTables.find("div.carousel-item.active").get()[0], {quality: 0.95})
+                            .then(function (dataUrl) {
+                                let link = document.createElement('a');
+                                link.download = 'schedule.jpeg';
+                                link.href = dataUrl;
+                                link.click();
+                            });
+                });
+                table.on('click', '.table-remove', function () {
+                    $(this).parents('tr').detach();
+                });
+                $("#add").on("click", function () {
+                    body.append(row);
+                    table.find("tr").last().find("select").multiselect({
+                        includeSelectAllOption: true
+                    });
+                });
+                $("#generate").on("click", function () {
+                    generatedTables.children().remove();
+                    carouselIndicators.children().remove();
+                    subjects = {};
+                    allPossibleSchedules = [];
+                    body.children().each(function (index) {
+                        let name = $(this).children().eq(4).text();
+                        let classID = $(this).children().eq(3).text();
+                        let days = $(this).children().eq(2).children().eq(0).val();
+                        let start = new Time($(this).children().eq(1).children().eq(0).val());
+                        let end = new Time($(this).children().eq(0).children().eq(0).val());
+                        let clazz = new Class(classID, days, start, end);
+                        if (name in subjects) {
+                            subjects[name].push(clazz);
+                        } else {
+                            subjects[name] = [clazz];
+                        }
+                    });
+                    //all possible schedules
+                    for (let i = 0; i < subjects[Object.keys(subjects)[0]].length; i++) {
+                        checkAllPossibleStates({[Object.keys(subjects)[0]]: subjects[Object.keys(subjects)[0]][i]});
+                    }
+                    render(filterByDays(allPossibleSchedules));
+                });
+            });
+        </script>
+        <style type="text/css">
+            #classes-table *, .generated-table *{
+                text-align: center;
+            }
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                height: 70px;
+                width: 70px;
+                outline: black;
+                background-size: 100%, 100%;
+                background-image: none;
+                color: black;
+            }
+
+            .carousel-control-next-icon:after
+            {
+                content: '>';
+                font-size: 40px;
+            }
+
+            .carousel-control-prev-icon:after {
+                content: '<';
+                font-size: 40px;
+            }
+            .carousel-indicators li {
+                background-color: #999;
+                background-color: rgba(70, 70, 70, 0.25);
+            }
+
+            .carousel-indicators .active {
+                background-color: #444;
+            }
+            .tab{
+                border-radius: 10px 10px 0px 0px;
+            }
+            .hidden{
+                display: none;
+            }
+        </style>
+    </body>
+</html>
