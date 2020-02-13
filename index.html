@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -12,6 +12,17 @@ and open the template in the editor.
         <meta name="description" content="مولد الجداول الدراسية لطلاب جامعة الزرقاء الخاصة">
         <meta name="keywords" content="مولد الجداول الدراسية,جداول دراسية,تنزيل الساعات,تنزيل المواد,إنشاء جدول دراسية,جامعة الزرقاء الخاصة,القبول والتسجيل,عمادة القبول والتسجيل">
         <meta name="author" content="رامي مناف عبد الله">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158361867-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-158361867-1');
+        </script>
     </head>
     <body>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -97,7 +108,7 @@ and open the template in the editor.
         </div>
         <script type="text/javascript">
             var debug = false;
-            const row = '<tr><td><input type="time"/></td><td><input type="time"/></td><td><select multiple="multiple" role="multiselect"><option value="ح">ح</option><option value="ن">ن</option><option value="ث">ث</option><option value="ر">ر</option><option value="خ">خ</option></select></td><td contenteditable="true">Class ID</td><td contenteditable="true">Subject Name</td><td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td></tr>';
+            const row = '<tr><td><input type="time"/></td><td><input type="time"/></td><td><select multiple="multiple" role="multiselect"><option value="ح">ح</option><option value="ن">ن</option><option value="ث">ث</option><option value="ر">ر</option><option value="خ">خ</option></select></td><td contenteditable="true">رقم الشعبة</td><td contenteditable="true">اسم المادة</td><td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td></tr>';
             const generatedTable = '<div class="carousel-item"><table class="generated-table table table-bordered table-responsive-md table-striped" style="background-color: white"><thead><tr><th>وقت الانتهاء</th><th>وقت البدء</th><th>أيام الأسبوع</th><th>رقم الشعبة</th><th>اسم المادة</th></tr></thead><tbody></tbody></table></div>';
             const noData = '<div class="carousel-item active" style="height: 360px;line-height:360px;padding: 150px"><h2 class="text-center">لا يوجد نتائج لعرضها</h2></div>';
             const table = $("#classes-table");
