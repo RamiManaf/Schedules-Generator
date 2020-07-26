@@ -6,12 +6,13 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>مولد الجداول الدراسية</title>
+        <title>مولد الجداول الدراسية لطلاب جامعة الزرقاء</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="مولد الجداول الدراسية لطلاب جامعة الزرقاء الخاصة">
         <meta name="keywords" content="مولد الجداول الدراسية,جداول دراسية,تنزيل الساعات,تنزيل المواد,إنشاء جدول دراسية,جامعة الزرقاء الخاصة,القبول والتسجيل,عمادة القبول والتسجيل">
         <meta name="author" content="رامي مناف عبد الله">
+        <link rel="icon" href="icon.png"/>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158361867-1"></script>
         <script>
@@ -27,15 +28,15 @@ and open the template in the editor.
     <body>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/multiselect.js"></script>
         <link rel="stylesheet" href="css/multiselect.css"/>
         <script src="js/dom-to-image.min.js"></script>
         <script src="js/classes.js"></script>
-        <div class="text-center .container-fluid" style="height: 70px;line-height: 70px;padding-top: 10px;background-color: #234471">
-            <h2 style="color: white">مولد الجداول الدراسية</h2>
+        <div class="text-center .container-fluid" style="padding: 10px;line-height: 70px;padding-top: 10px;background-color: #234471">
+            <h2 style="color: white">مولد الجداول الدراسية لطلاب جامعة الزرقاء</h2>
         </div>
         <div>
             <div class="alert alert-info hidden" id="info-message" role="alert">
@@ -43,10 +44,13 @@ and open the template in the editor.
                 <ul dir="rtl" style="text-align: right">
                     <li>قم بإضافة الشعب المواد المطروحة عن طريق الضغط على زر إضافة</li>
                     <li>اكتب بيانات داخل الحقول المناسبة في الجدول</li>
-                    <li>في حقول الوقت تكون الساعة 12:00 ظهرًا وما قبلها صباحًا والساعة 12:01 ظهرًا وما بعدها فهي مساءً</li>
+                    <li>في حقول الوقت يبدأ التوقيت المسائي (م) من الساعة 12 ظهرًا وما قبله هو التوقيت الصباحي (ص)</li>
                     <li>اختر أيام الأسبوع التي تريد الدوام فيها من الخلال القائمة في الأسفل</li>
                     <li>اضغط على زر معالجة لتظهر جميع الجدوال الممكنة في خانة النتيجة أسفل الصفحة</li>
-                </ul>
+                    <li>يمكنك إضافة وقت للراحة لكن يجب عليك أن تكتب جميع أسماء جميع أوقات الراحة بنفس الطريقة ولا تقم بتغيير اسم الشعبة وتأكد من تحديد أيام الأسبوع</li>
+                </ul><center>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/i-LyRj6OAeQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </center>
             </div>
         </div>
         <div>
@@ -61,9 +65,12 @@ and open the template in the editor.
                 </select>
                 <label> :اختر أيام الدوام</label>
             </div>
-            <div style="margin-left:auto; margin-right:0; width: max-content">
-                <button id="add" class="btn btn-primary">إضافة <span class="fas fa-plus fa-2x" style="vertical-align: middle"></span></button>
-                <button id="generate" class="btn btn-success">معالجة <span class="fas fa-caret-right fa-2x" style="vertical-align: middle"></span></button>
+            <div style="margin-left:auto; margin-right:0; width: max-content; padding: 5px 0px 5px 0px">
+                <button dir="rtl" class="btn btn-primary" data-toggle="modal" data-target="#offered-subjects" onclick="$('#facilities').trigger('change');">إضافة مادة مطروحة <span class="fas fa-plus fa-2x" style="vertical-align: middle"></span></button>
+                <button dir="rtl" id="add" class="btn btn-primary">إضافة <span class="fas fa-plus fa-2x" style="vertical-align: middle"></span></button>
+            </div>
+            <div style="margin-left:auto; margin-right:0; width: max-content; padding-bottom: 5px">
+                <button dir="rtl" id="generate" class="btn btn-success">معالجة <span class="fas fa-caret-left fa-2x" style="vertical-align: middle"></span></button>
             </div>
         </div>
         <table id="classes-table" class="table table-bordered table-responsive-md table-striped">
@@ -71,7 +78,8 @@ and open the template in the editor.
                 <tr>
                     <th>وقت الانتهاء</th>
                     <th>وقت البدء</th>
-                    <th>أيام الأسبوع</th>
+                    <th>أيام الدوام</th>
+                    <th>المدرس</th>
                     <th>رقم الشعبة</th>
                     <th>اسم المادة</th>
                     <th></th>
@@ -83,13 +91,13 @@ and open the template in the editor.
         <div class="bg-success" style="line-height: 100px;padding: 20px;">
             <h1 class="text-center" style="color: white">النتيجة</h1>
         </div>
-        <div class="text-center" style="padding-top: 10px">
-            <button class="btn btn-info" id="save" disabled="true">حفظ الجدول <span class="fas fa-save fa-2x"></span></button>
+        <div class="text-center" style="padding: 10px 0px">
+            <button class="btn btn-info" id="save" disabled="true" style="padding: ">حفظ الجدول <span class="fas fa-save fa-2x"></span></button>
         </div>
-        <div id="generated-tables" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false" style="height: 360px">
+        <div id="generated-tables" class="carousel slide" data-ride="carousel" data-interval="false" data-wrap="false">
             <ol class="carousel-indicators">
             </ol>
-            <div class="carousel-inner" style="height: 360px">
+            <div class="carousel-inner">
                 <div class="carousel-item active" style="height: 360px;line-height:360px;padding: 150px"><h2 class="text-center">لا يوجد نتائج لعرضها</h2></div>
             </div>
             <a class="carousel-control-prev" href="#generated-tables" role="button" data-slide="prev">
@@ -101,22 +109,84 @@ and open the template in the editor.
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <div style="background-color: #234471;text-align: right;direction: rtl;color: white;padding: 20px">
-            <p>مرخص برخصة <a href="https://www.marefa.org/%D8%B1%D8%AE%D8%B5%D8%A9_%D9%88%D9%82%D9%81_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9">وقف العامة 1.0</a></p>
+        <div style="background-color: #234471;text-align: right;direction: rtl;color: white;padding: 20px; text-align: center">
             <p>رامي مناف عبد الله</p>
-            <p>بريد : <a href="mailto:ramimanaf20001@gmail.com">ramimanaf20001@gmail.com</a></p>
+            <p>البريد : <a href="mailto:ramimanaf20001@gmail.com">ramimanaf20001@gmail.com</a></p>
+            <p>مرخص برخصة <a href="https://www.marefa.org/%D8%B1%D8%AE%D8%B5%D8%A9_%D9%88%D9%82%D9%81_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9">وقف العامة 1.0</a></p>
+            <p>Page icon made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a><p>
+        </div>
+        <!-- The Modal -->
+        <div class="modal" id="offered-subjects">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style="margin-left: 0px">&times;</button>
+                        <h4 class="modal-title">اختر المواد التي تريد إضافتها</h4>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div style="margin: auto; width: fit-content; margin-bottom: 10px" dir="rtl">
+                            <select id="facilities" class="form-control">
+                                <option value="9">الصيدلة</option>
+                                <option value="0">الشريعة</option>
+                                <option value="1">الآاداب</option>
+                                <option value="2">العلوم</option>
+                                <option value="3">الاقتصاد والعلوم الإدارية</option>
+                                <option value="4">العلوم التربوية</option>
+                                <option value="5">الحقوق</option>
+                                <option value="6">العلوم الطبية المساندة</option>
+                                <option value="7">التمريض</option>
+                                <option value="8">الهندسة التكنولوجية</option>
+                                <option value="10">الفنون والتصميم</option>
+                                <option value="11">الصحافة والإعلام</option>
+                                <option value="12">تكنولوجيا المعلومات</option>
+                            </select>
+                        </div>
+                        <div style="overflow: auto; height: 70vh">
+                            <table id="offered-subjects-table" class="table table-bordered table-responsive-md table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>وقت الانتهاء</th>
+                                        <th>وقت البدء</th>
+                                        <th>أيام الدوام</th>
+                                        <th>المدرس</th>
+                                        <th>رقم الشعبة</th>
+                                        <th>اسم المادة</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" id="addFromOfferedSubjects" class="btn btn-success" data-dismiss="modal">إضافة</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">إغلاق</button>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <script type="text/javascript">
             var debug = false;
-            const row = '<tr><td><input type="time"/></td><td><input type="time"/></td><td><select multiple="multiple" role="multiselect"><option value="ح">ح</option><option value="ن">ن</option><option value="ث">ث</option><option value="ر">ر</option><option value="خ">خ</option></select></td><td contenteditable="true">رقم الشعبة</td><td contenteditable="true">اسم المادة</td><td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td></tr>';
-            const generatedTable = '<div class="carousel-item"><table class="generated-table table table-bordered table-responsive-md table-striped" style="background-color: white"><thead><tr><th>وقت الانتهاء</th><th>وقت البدء</th><th>أيام الأسبوع</th><th>رقم الشعبة</th><th>اسم المادة</th></tr></thead><tbody></tbody></table></div>';
+            const row = '<tr><td><input type="time"/></td><td><input type="time"/></td><td><select multiple="multiple" role="multiselect"><option value="ح">ح</option><option value="ن">ن</option><option value="ث">ث</option><option value="ر">ر</option><option value="خ">خ</option></select></td><td contenteditable="true">المدرس</td><td contenteditable="true">رقم الشعبة</td><td contenteditable="true">اسم المادة</td><td><button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td></tr>';
+            const generatedTable = '<div class="carousel-item"><table class="generated-table table table-bordered table-responsive-md table-striped" style="background-color: white"><thead><tr><th>وقت الانتهاء</th><th>وقت البدء</th><th>أيام الأسبوع</th><th>المدرس</th><th>رقم الشعبة</th><th>اسم المادة</th></tr></thead><tbody></tbody></table></div>';
             const noData = '<div class="carousel-item active" style="height: 360px;line-height:360px;padding: 150px"><h2 class="text-center">لا يوجد نتائج لعرضها</h2></div>';
+            const noPossibleSchedules = '<div class="carousel-item active" style="height: 360px;line-height:360px;padding: 150px"><h2 class="text-center">يوجد تعارض بين المواد</h2></div>';
             const table = $("#classes-table");
             const body = $("#classes-table tbody");
+            var offeredSubjectsTable = $("#offered-subjects-table tbody");
             const generatedTables = $("#generated-tables .carousel-inner");
             const carousel = $(".carousel");
             const carouselIndicators = $(".carousel-indicators");
             const save = $("#save");
+            var offeredSubjects;
             var subjects = {};
             var allPossibleSchedules = [];
             function checkAllPossibleStates(schedule) {
@@ -143,7 +213,7 @@ and open the template in the editor.
 
             function render(schedules) {
                 if (schedules.length === 0) {
-                    generatedTables.append(noData);
+                    generatedTables.append(noPossibleSchedules);
                     save.attr("disabled", true);
                 } else {
                     save.removeAttr("disabled");
@@ -157,6 +227,7 @@ and open the template in the editor.
                             row.append($("<td><input type='time' readonly='true' value='" + clazz.end + "'/></td>"));
                             row.append($("<td><input type='time' readonly='true' value='" + clazz.start + "'/></td>"));
                             row.append($("<td></td>").text(clazz.days.join(" ")));
+                            row.append($("<td></td>").text(clazz.instructor));
                             row.append($("<td></td>").text(clazz.id));
                             row.append($("<td></td>").text(Object.keys(schedules[i])[k]));
                             lastTableBody.append(row);
@@ -191,6 +262,48 @@ and open the template in the editor.
             }
 
             $(function () {
+                $.getJSON("Data.json", function (json) {
+                    offeredSubjects = json;
+                    $('#facilities').trigger("change");
+                });
+                $('#facilities').on('change', function () {
+                    offeredSubjectsTable.children().remove();
+                    let facility = offeredSubjects[$("#facilities").val().toString()];
+                    for (let x = 0; x < Object.keys(facility).length; x++) {
+                        let row = $("<tr></tr>");
+                        row.append($("<td><input type='time' readonly='true' value='" + facility[x.toString()]["End"] + "'/></td>"));
+                        row.append($("<td><input type='time' readonly='true' value='" + facility[x.toString()]["Start"] + "'/></td>"));
+                        row.append($("<td></td>").text(facility[x.toString()]["Days"]));
+                        row.append($("<td></td>").text(facility[x.toString()]["Instructor"]));
+                        row.append($("<td></td>").text(facility[x.toString()]["Section"]));
+                        row.append($("<td></td>").text(facility[x.toString()]["Name"]));
+                        row.append($("<td><input type='checkbox'/></td>"));
+                        offeredSubjectsTable.append(row);
+                    }
+                });
+                $("#addFromOfferedSubjects").on('click', function () {
+                    offeredSubjectsTable.children().each(function (index) {
+                        let facility = offeredSubjects[$("#facilities").val().toString()];
+                        if ($(this).children().eq(6).children().eq(0).prop('checked')) {
+                            let row = $("<tr></tr>");
+                            row.append("<td><input type='time' value='" + facility[index.toString()]["End"] + "'/>");
+                            row.append("<td><input type='time' value='" + facility[index.toString()]["Start"] + "'/>");
+                            let select = $('<td><select multiple="multiple" role="multiselect"><option value="ح">ح</option><option value="ن">ن</option><option value="ث">ث</option><option value="ر">ر</option><option value="خ">خ</option></select></td>');
+                            $.each(facility[index.toString()]["Days"].split(" "), function (i, e) {
+                                select.find("option[value=" + e + "]").prop("selected", true);
+                            });
+                            row.append(select);
+                            row.append('<td contenteditable="true">' + facility[index.toString()]["Instructor"] + '</td>');
+                            row.append('<td contenteditable="true">' + facility[index.toString()]["Section"] + '</td>');
+                            row.append('<td contenteditable="true">' + facility[index.toString()]["Name"] + '</td>');
+                            row.append('<button class="table-remove btn btn-danger"><spane class="fas fa-times fa-lg"></spane></button></td>');
+                            table.append(row);
+                            table.find("tr").last().find("select").multiselect({
+                                includeSelectAllOption: true
+                            });
+                        }
+                    });
+                });
                 $("#info").on("click", function () {
                     $("#info-message").toggleClass("hidden");
                 });
@@ -221,28 +334,39 @@ and open the template in the editor.
                     subjects = {};
                     allPossibleSchedules = [];
                     body.children().each(function (index) {
-                        let name = $(this).children().eq(4).text();
-                        let classID = $(this).children().eq(3).text();
+                        let name = $(this).children().eq(5).text();
+                        let classID = $(this).children().eq(4).text();
+                        let instructor = $(this).children().eq(3).text();
                         let days = $(this).children().eq(2).children().eq(0).val();
                         let start = new Time($(this).children().eq(1).children().eq(0).val());
                         let end = new Time($(this).children().eq(0).children().eq(0).val());
-                        let clazz = new Class(classID, days, start, end);
+                        let clazz = new Class(classID, instructor, days, start, end);
                         if (name in subjects) {
                             subjects[name].push(clazz);
                         } else {
                             subjects[name] = [clazz];
                         }
                     });
-                    //all possible schedules
-                    for (let i = 0; i < subjects[Object.keys(subjects)[0]].length; i++) {
-                        checkAllPossibleStates({[Object.keys(subjects)[0]]: subjects[Object.keys(subjects)[0]][i]});
+                    if (Object.keys(subjects).length === 0 || Object.keys(subjects).length === 1) {
+                        generatedTables.append(noData);
+                    } else {
+                        //all possible schedules
+                        for (let i = 0; i < subjects[Object.keys(subjects)[0]].length; i++) {
+                            checkAllPossibleStates({[Object.keys(subjects)[0]]: subjects[Object.keys(subjects)[0]][i]});
+                        }
+                        render(filterByDays(allPossibleSchedules));
                     }
-                    render(filterByDays(allPossibleSchedules));
+                    $('html, body').animate({
+                        scrollTop: $(generatedTables).offset().top
+                    }, 800);
+                    gtag('event', 'generate', {
+                        'event_category': 'table'
+                    });
                 });
             });
         </script>
         <style type="text/css">
-            #classes-table *, .generated-table *{
+            #classes-table *, .generated-table *, #offered-subjects-table *{
                 text-align: center;
             }
             .carousel-control-prev-icon,

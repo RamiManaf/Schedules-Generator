@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var debug = false;
+var debug = true;
 function zeroPad(num, places) {
     var zero = places - num.toString().length + 1;
     return Array(+(zero > 0 && zero)).join("0") + num;
@@ -28,8 +28,9 @@ class Time {
 }
 
 class Class {
-    constructor(id, days, start, end) {
+    constructor(id, instructor, days, start, end) {
         this.id = id;
+        this.instructor = instructor;
         this.days = days;
         this.start = start;
         this.end = end;
